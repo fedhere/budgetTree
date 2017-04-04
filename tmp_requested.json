@@ -1,0 +1,79 @@
+{
+ "name": "ObamaBudjet2011",
+ "children": [
+      {"name":"SocialSecurityAdministration",
+       "children": [
+           {"name":"Discretionary, enacted","size":11.7},{"name":"Mandatory, enacted","size":817.5}]},
+      {"name":"DepartmentofHealthandHumanServicesincludingMedicareandMedicaid",
+       "children": [
+           {"name":"Discretionary, enacted","size":84.2},{"name":"Mandatory, enacted","size":787.8}]},
+      {"name":"DepartmentofDefenseincludingOverseasContingencyOperations",
+       "children": [
+           {"name":"Discretionary, enacted","size":683.0},{"name":"Mandatory, enacted","size":5.3}]},
+      {"name":"DepartmentofEducation",
+       "children": [
+           {"name":"Discretionary, enacted","size":79.1},{"name":"Mandatory, enacted","size":19.4}]},
+      {"name":"DepartmentofAgriculture",
+       "children": [
+           {"name":"Discretionary, enacted","size":28.8},{"name":"Mandatory, enacted","size":121.9}]},
+      {"name":"DepartmentofVeteransAffairs",
+       "children": [
+           {"name":"Discretionary, enacted","size":58.8},{"name":"Mandatory, enacted","size":70.4}]},
+      {"name":"DepartmentofHousingandUrbanDevelopment",
+       "children": [
+           {"name":"Discretionary, enacted","size":47.9},{"name":"Mandatory, enacted","size":8.9}]},
+
+           {"name":"DepartmentofStateandOtherInternationalPrograms",
+       "children": [
+           {"name":"Discretionary, enacted","size":53.4},{"name":"Mandatory, enacted","size":2.6}]},
+      {"name":"DepartmentofHomelandSecurity",
+       "children": [
+           {"name":"Discretionary, enacted","size":58.8},{"name":"Mandatory, enacted","size":1.6}]},
+      {"name":"DepartmentofEnergy",
+       "children": [
+           {"name":"Discretionary, enacted","size":42.3},{"name":"Mandatory, enacted","size":20131.7}]},
+      {"name":"DepartmentofJustice",
+       "children": [
+           {"name":"Discretionary, enacted","size":28.8},{"name":"Mandatory, enacted","size":5.8}]},
+      {"name":"NationalAeronauticsandSpaceAdministration",
+       "children": [
+           {"name":"Discretionary, enacted","size":17.7},{"name":"Mandatory, enacted","size":20130.02}]},
+      {"name":"DepartmentofTransportation",
+       "children": [
+           {"name":"Discretionary, enacted","size":25.6},{"name":"Mandatory, enacted","size":58.6}]},
+      {"name":"DepartmentoftheTreasury",
+       "children": [
+           {"name":"Discretionary, enacted","size":13.5},{"name":"Mandatory, enacted","size":148.7}]},
+      {"name":"DepartmentoftheInterior",
+       "children": [
+           {"name":"Discretionary, enacted","size":12.4},{"name":"Mandatory, enacted","size":20131.1}]},
+      {"name":"DepartmentofLabor",
+       "children": [
+           {"name":"Discretionary, enacted","size":14.0},{"name":"Mandatory, enacted","size":113.1}]},
+      {"name":"DepartmentofCommerce",
+       "children": [
+           {"name":"Discretionary, enacted","size":10.9},{"name":"Mandatory, enacted","size":0.5}]},
+      {"name":"ArmyCorpsofEngineersCivilWorks",
+       "children": [
+           {"name":"Discretionary, enacted","size":9.3},{"name":"Mandatory, enacted","size":20130.06}]},
+      {"name":"EnvironmentalProtectionAgency",
+       "children": [
+           {"name":"Discretionary, enacted","size":9.5},{"name":"Mandatory, enacted","size":20130.1}]},
+      {"name":"NationalScienceFoundation",
+       "children": [
+           {"name":"Discretionary, enacted","size":8.0},{"name":"Mandatory, enacted","size":0.2}]},
+      {"name":"SmallBusinessAdministration",
+       "children": [
+           {"name":"Discretionary, enacted","size":1.4},{"name":"Mandatory, enacted","size":1.8}]},
+      {"name":"CorporationforNationalandCommunityService",
+       "children": [
+           {"name":"Discretionary, enacted","size":0.8},{"name":"Mandatory, enacted","size":0.007}]},
+      {"name":"Netinterest",
+       "children": [
+           {"name":"Discretionary, enacted","size":null},{"name":"Mandatory, enacted","size":0.2}]},
+      {"name":"Disastercosts",
+       "children": [
+           {"name":"Discretionary, enacted","size":0.005},{"name":"Mandatory, enacted","size":null}]},
+      {"name":"Otherspending",
+       "children": [
+           {"name":"Discretionary, enacted","size":19.3},{"name":"Mandatory, enacted","size":88.0}]}]}
