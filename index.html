@@ -39,6 +39,8 @@ var svg = d3.select("svg"),
 var fader = function(color) { console.log("color", color); return color; },
     color = d3.scaleOrdinal().domain([20,13,6,-6,-13,-20]).range([-20,20]),
     format = d3.format(",d");
+
+var colorScale = d3.scaleQuantize().domain([-20,20]).range(["#c13819","#d67a66","#eabcb2","#bbc3ab","#88976d","#556b2f"]);
     
 var treemap = d3.treemap()
     .tile(d3.treemapResquarify)
@@ -66,7 +68,8 @@ var myScale = d3.scaleLinear().domain([-2.03, 2]).range([-100, 100]);
       .attr("id", function(d) { return d.data.id; })
       .attr("width", function(d) { return d.x1 - d.x0; })
       .attr("height", function(d) { return d.y1 - d.y0; })
-      .attr("fill", function(d) { console.log("diff", d.data.id, d.data.diff, myScale(100 * (d.data.size - d.data.oldsize) / d.data.oldsize)); return d3.interpolateRgb("#c13819", "#556b2f")(myScale((d.data.size - d.data.oldsize) / d.data.oldsize))});
+      .attr("fill", function(d) { console.log("diff", d.data.id, d.data.diff, colorScale(100 * (d.data.size - d.data.oldsize) / d.data.oldsize)); return colorScale(100 * (d.data.size - d.data.oldsize) / d.data.oldsize)});
+  //d3.interpolateRgb("#c13819", "#556b2f")(myScale((d.data.size - d.data.oldsize) / d.data.oldsize))});
   
   cell.append("clipPath")
       .attr("id", function(d) { return "clip-" + d.data.id; })
