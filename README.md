@@ -1,4 +1,5 @@
 ** Budget visualizations **
+
 These are federal budget visualizations prepared for Mike Holland's [NYU CUSP](http://cusp.nyu.edu/)lecture on the inner works of the US federal budget committees.
 
 The visualizations are done in the style of the famous [http://www.nytimes.com/packages/html/newsgraphics/2011/0119-budget/](NY Times 2012 visualization by Shan Carter and Amanda Cox).
