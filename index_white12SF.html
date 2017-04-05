@@ -126,7 +126,7 @@ function mouseover(d, i) {
       .text(function(d) { return d; }).style("fill", "white").style("font-size", "12px");
 
   cell.append("title")
-      .text(function(d) { return d.data.id.replace("2012.","").replace("2017.","").replace(".","\n") + "\n" + d.data.kind + "\n" + "2017 Amount: $" + format(d.data.size) + " billions" + "\n" + "2016 Amount: $" + format(d.data.oldsize) + " billions" + "\n" + "Change from 2016: " + format((d.data.size - d.data.oldsize) / d.data.oldsize * 100) + "%" ; }).style("color", "white").style("font-size", "14px").style("text-anchor","middle");
+      .text(function(d) { return d.data.id.replace("2012.","").replace("2017.","").replace(".","\n") + "\n" + d.data.kind + "\n" + "2012 Amount: $" + format(d.data.size) + " billions" + "\n" + "2010 Amount: $" + format(d.data.oldsize) + " billions" + "\n" + "Change from 2016: " + format((d.data.size - d.data.oldsize) / d.data.oldsize * 100) + "%" ; }).style("color", "white").style("font-size", "14px").style("text-anchor","middle");
 
   d3.selectAll("input")
       .data(function(d) { return d })
