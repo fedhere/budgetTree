@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<style>
+
+form {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+svg {
+  font: 10px sans-serif;
+} 
+onm.hover {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.image-border {
+  fill: transparent;
+  stroke: transparent;
+  shape-rendering: crispEdges;
+}
+.image-border:hover {
+  stroke: black;
+}
+    
+</style>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<svg width="960" height="570"></svg>
+<!--<form>
+  <label><input type="radio"  onClick="UpdateDatareq()" checked> requested</label>
+  <label><input type="radio"  onClick="UpdateDataen()"> enacted</label>
+</form>
+d3.scaleLinear().domain([-1,1]).range([d3.rgb("#666600"), d3.rgb('#CC0000')]),
+color = d3.scaleLinear(0).domain([-1,1]),
+    console.log("col", color),
+ color = d3.scaleLinear().domain([-1,1])
+      .interpolate(d3.interpolateHcl)
+      .range([d3.rgb("#556B2F"), d3.rgb('#bb2200')]),
+               d3.schemeCategory20.map(fader)),
+"#556b2f","#88976d","#bbc3ab","#eabcb2","#d67a66","#c13819"]),
+interpolateRdYlGn(myScale(1 * (d.data.diff) + 0.5))});
+  
+-d3.interpolateRdYlGn().domain([-1,1]);-->
+<script>
+
+$(document).tooltip({show: null});
+    
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+var fader = function(color) { console.log("color", color); return color; },
+    color = d3.scaleOrdinal().domain([20,13,6,-6,-13,-20]).range([-20,20]),
+    format = d3.format(",d");
+
+var colorScale = d3.scaleQuantize().domain([-20,20]).range(["#c13819","#d67a66","#eabcb2","#bbc3ab","#88976d","#556b2f"]);
+    
+var treemap = d3.treemap()
+    .tile(d3.treemapResquarify)
+    .size([width, height])
+    .round(true)
+    .paddingInner(1)
+    .paddingOuter(2);
+
+
+function doit(data){  
+  var root = d3.hierarchy(data)
+      .eachBefore(function(d) { d.data.id = (d.parent ? d.parent.data.id + "." : "") + d.data.name; })
+      .sum(sumBySize)
+      .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
+
+  treemap(root);
+
+  var cell = svg.selectAll("g")
+    .data(root.leaves())
+    .enter().append("g")
+      .attr("transform", function(d) { return "translate(" + d.x0 + "," + d.y0 + ")"; });
+var myScale = d3.scaleLinear().domain([-2.03, 2]).range([-100, 100]);
+  
+  cell.append("rect")
+      .attr("id", function(d) { return d.data.id; })
+      .attr("width", function(d) { return d.x1 - d.x0; })
+      .attr("height", function(d) { return d.y1 - d.y0; })
+      .attr("fill", function(d) { console.log("diff", d.data.id, d.data.diff, colorScale(100 * (d.data.size - d.data.oldsize) / d.data.oldsize)); return colorScale(100 * (d.data.size - d.data.oldsize) / d.data.oldsize)}).on("mouseover", mouseover)
+                    .on("mouseout", mouseout);
+        
+  //d3.interpolateRgb("#c13819", "#556b2f")(myScale((d.data.size - d.data.oldsize) / d.data.oldsize))});
+function mouseover(d, i) {
+            d3.select(this).style("stroke","#aaaaaa")
+                .style("stroke-width","2px");
+};
+        function mouseout(d, i) {
+            d3.select(this).style("stroke", "white").style("stroke-width","1px");
+        };
+    cell.append("clipPath")
+      .attr("id", function(d) { return "clip-" + d.data.id; })
+    .append("use")
+      .attr("xlink:href", function(d) { return "#" + d.data.id; });
+
+  cell.append("text")
+      .attr("clip-path", function(d) { return "url(#clip-" + d.data.id + ")"; })
+    .selectAll("tspan")
+      .data(function(d) { return ( d.data.id.replace("2012.","").replace("2017.","").replace("Agency","").replace("Department of the","").replace("Department of", "").replace(".","") + " $" + format(d.data.size) + "B").split(/(?=[A-Z][^A-Z])/g); })
+    .enter().append("tspan")
+      .attr("x", 4)
+      .attr("y", function(d, i) { return 13 + i * 10; })
+      .text(function(d) { return d; }).style("fill", "white").style("font-size", "12px");
+
+  cell.append("title")
+      .text(function(d) { return d.data.id.replace("2012.","").replace("2017.","").replace(".","\n") + "\n" + d.data.kind + "\n" + "2012 Amount: $" + format(d.data.size) + " billions" + "\n" + "2010 Amount: $" + format(d.data.oldsize) + " billions" + "\n" + "Change from 2016: " + format((d.data.size - d.data.oldsize) / d.data.oldsize * 100) + "%" ; }).style("color", "white").style("font-size", "14px").style("text-anchor","middle");
+ 
+
+  d3.selectAll("input")
+      .data(function(d) { return d })
+      .on("change", changed);
+
+  var timeout = d3.timeout(function() {
+    d3.select("input[value=\"sumByCount\"]")
+        .property("checked", true)
+        .dispatch("change");
+  }, 2000);
+
+  function changed(sum) {
+    timeout.stop();
+    treemap(root.sum(sum));
+
+      }
+};
+
+function sumByCount(d) {
+  return d.children ? 0 : 1;
+}
+
+function sumBySize(d) {
+  return d.size;
+}
+    
+function UpdateDataen() {
+    // Get the data again
+    d3.json("tmp.json", function(error, data){    
+        if (error) throw error;
+        var svg = d3.select("body").transition();
+doit(data);
+    });
+}
+            
+function UpdateDatareq() {
+    // Get the data again
+    d3.json("tmp_requested.json", function(error, data){    
+        if (error) throw error;
+        // Select the section we want to apply our changes to
+        var svg = d3.select("body").transition();
+doit(data);
+    });
+}
+            
+d3.json("budget12.json", function(error, data){    
+  if (error) throw error;
+    doit(data);
+});
+</script>
