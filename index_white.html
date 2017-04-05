@@ -16,6 +16,8 @@ a:hover tspan:first-child {
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="https://d3js.org/d3-zoom.v1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <svg width="960" height="570"></svg>
 <!--<form>
   <label><input type="radio"  onClick="UpdateDatareq()" checked> requested</label>
@@ -33,6 +35,9 @@ interpolateRdYlGn(myScale(1 * (d.data.diff) + 0.5))});
   
 -d3.interpolateRdYlGn().domain([-1,1]);-->
 <script>
+    
+$(document).tooltip({show: null});
+
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
@@ -93,7 +98,17 @@ var cell = svg.selectAll("g")
       .attr("fill", function(d) { if (d.data.kind === 'Mandatory')      
                                     {return "#dddddd"} 
                                  else 
-                                 {return colorScale(100 * (d.data.size - d.data.oldsize) / d.data.oldsize)}});
+                                 {return colorScale(100 * (d.data.size - d.data.oldsize) / d.data.oldsize)}}).on("mouseover", mouseover)
+                    .on("mouseout", mouseout);
+        
+  //d3.interpolateRgb("#c13819", "#556b2f")(myScale((d.data.size - d.data.oldsize) / d.data.oldsize))});
+function mouseover(d, i) {
+            d3.select(this).style("stroke","#aaaaaa")
+                .style("stroke-width","2px");
+};
+        function mouseout(d, i) {
+            d3.select(this).style("stroke", "white").style("stroke-width","1px");
+        };
   //d3.interpolateRgb("#c13819", "#556b2f")(myScale((d.data.size - d.data.oldsize) / d.data.oldsize))});
   
  
