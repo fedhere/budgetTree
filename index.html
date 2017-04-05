@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<style>
+
+form {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+svg {
+  font: 10px sans-serif;
+}
+a:hover tspan:first-child {
+  text-decoration: underline;
+}
+
+</style>
+<script>
+    function go(loc){
+      console.log(loc);
+        document.getElementById('iframe').src = loc; 
+    }
+</script>
+
+<div class="logins_details_container"><!--The top container-->
+    <iframe id="iframe" src="index2017SF.html" width="1000" height="600"></iframe>
+</div> 
+<body>
+    USA Budget visualizer, in the style of the <a href="http://www.nytimes.com/packages/html/newsgraphics/2011/0119-budget/"> NY Times 2012 visualization</a> by Shan Carter and Amanda Cox, realized in <a href="https://d3js.org/">D3</a>
+    <a href="https://github.com/fedhere/budgetTree">In this repository</a> you can find the parser code and some more info
+    <br>
+        <br>
+
+        <br>
+
+</body>
+
+<div class="iframe_container">
+    <form>
+        <input type="radio" name="iframe" value="type" onClick = "go('index2017.html')"/>2017 grouped by Account (Mandatory/Discretionary)
+        <input type="radio" name="iframe" value="type" onClick = "go('index2017SF.html')"/>2017 grouped by Super Functions
+         <br>
+        <input type="radio" name="iframe" value="type" onClick= "go('index2012.html')"/>2012 grouped by Account (Mandatory/Discretionary)
+        <input type="radio" name="iframe" value="type" onClick= "go('index2012SF.html')"/>2012 grouped by Super Functions
+        <br>
+         <br>
+       <input type="radio" name="iframe" value="type" onClick = "go('index_white17.html')"/>2017 Discretionary grouped by Account 
+        <input type="radio" name="iframe" value="type" onClick = "go('index_white17SF.html')"/>2017 Discretionary grouped by Super Functions
+         <br>
+        <input type="radio" name="iframe" value="type" onClick= "go('index_white12.html')"/>2012 Discretionary grouped by Account 
+        <input type="radio" name="iframe" value="type" onClick= "go('index_white12SF.html')"/>2012 Discretionary grouped by Super Functions
+         
+         </form>
+</div>
