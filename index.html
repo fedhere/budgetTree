@@ -79,7 +79,7 @@ var myScale = d3.scaleLinear().domain([-2.03, 2]).range([-100, 100]);
   cell.append("text")
       .attr("clip-path", function(d) { return "url(#clip-" + d.data.id + ")"; })
     .selectAll("tspan")
-      .data(function(d) { return ( d.data.id.replace("2012.","").replace("2017.","").replace("Agency","").replace("Department of the","").replace("Department of", "").replace(".","")).split(/(?=[A-Z][^A-Z])/g); })
+      .data(function(d) { return ( d.data.id.replace("2012.","").replace("2017.","").replace("Agency","").replace("Department of the","").replace("Department of", "").replace(".","") + " $" + format(d.data.size) + "B").split(/(?=[A-Z][^A-Z])/g); })
     .enter().append("tspan")
       .attr("x", 4)
       .attr("y", function(d, i) { return 13 + i * 10; })

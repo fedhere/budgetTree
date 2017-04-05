@@ -15,6 +15,7 @@ a:hover tspan:first-child {
 </style>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/d3-zoom.v1.min.js"></script>
 <svg width="960" height="570"></svg>
 <!--<form>
   <label><input type="radio"  onClick="UpdateDatareq()" checked> requested</label>
@@ -58,11 +59,32 @@ function doit(data){
 
   treemap(root);
 
-  var cell = svg.selectAll("g")
+//Redraw for zoom
+function redraw() {
+  console.log("here", d3.event.translate, d3.event.scale);
+  svg.attr("transform",
+      "translate(" + d3.event.translate + ")"
+      + " scale(" + d3.event.scale + ")");
+  //d3.selectAll("text").style("font-size", (nodeFontSize/d3.event.scale) + "px");
+}
+   
+var zoom = 
+    d3.zoom()
+          .scaleExtent([-100, 100])
+          .on("zoom", zoomhandler);
+
+
+function zoomhandler() {
+  svg.attr("transform", "translate(" + d3.event.transform.x + ',' + d3.event.transform.y + ")scale(" + d3.event.transform.k + ")")
+    .style("font-size", function(){return 12 / (d3.event.transform.k ) + "px";});
+}
+
+var cell = svg.selectAll("g")
     .data(root.leaves())
-    .enter().append("g")
-      .attr("transform", function(d) { return "translate(" + d.x0 + "," + d.y0 + ")"; });
-var myScale = d3.scaleLinear().domain([-2.03, 2]).range([-100, 100]);
+    .enter().append("g").append("g")
+.attr("transform", function(d) { return "translate(" + d.x0 + "," + d.y0 + ")" ; }).call(zoom);//.call(d3.zoom().on("zoom", redraw));
+
+    var myScale = d3.scaleLinear().domain([-2.03, 2]).range([-100, 100]);
   
   cell.append("rect")
       .attr("id", function(d) { return d.data.id; })
@@ -83,7 +105,7 @@ var myScale = d3.scaleLinear().domain([-2.03, 2]).range([-100, 100]);
   cell.append("text")
       .attr("clip-path", function(d) { return "url(#clip-" + d.data.id + ")"; })
     .selectAll("tspan")
-      .data(function(d) { return ( d.data.id.replace("2012.","").replace("2017.","").replace("Agency","").replace("Department of the","").replace("Department of", "").replace(".","")).split(/(?=[A-Z][^A-Z])/g); })
+      .data(function(d) { return ( d.data.id.replace("2012.","").replace("2017.","").replace("Agency","").replace("Department of the","").replace("Department of", "").replace(".","")+ " $" + format(d.data.size) + "B").split(/(?=[A-Z][^A-Z])/g) ; })
     .enter().append("tspan")
       .attr("x", 4)
       .attr("y", function(d, i) { return 13 + i * 10; })
