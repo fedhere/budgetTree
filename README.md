@@ -1,4 +1,4 @@
-** Budget visualizations **
+**Federal Budget visualizations**
 
 These are federal budget visualizations prepared for Mike Holland's [NYU CUSP](http://cusp.nyu.edu/)lecture on the inner works of the US federal budget committees.
 
